@@ -5,7 +5,7 @@ out/**
 error.log
 *.log.*
 *.lck
-
+.idea
 gen/
 idea-gitignore.jar
 resources/templates.list
