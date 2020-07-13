@@ -1,5 +1,6 @@
 package lk.ou.se.test.service.custom;
 
+import lk.ou.se.test.dto.GetDependentDTO;
 import lk.ou.se.test.entity.Employee;
 import lk.ou.se.test.service.SuperService;
 
@@ -18,6 +19,8 @@ public interface EmployeeService extends SuperService {
     Employee findEmployeeById(String employeeId);
 
     String getLastEmployeeId();
+
+    List<GetDependentDTO> getDependentById(String  emp_id) ;
 
 
 }

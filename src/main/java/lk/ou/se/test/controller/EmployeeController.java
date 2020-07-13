@@ -1,5 +1,6 @@
 package lk.ou.se.test.controller;
 
+import lk.ou.se.test.dto.GetDependentDTO;
 import lk.ou.se.test.entity.Employee;
 import lk.ou.se.test.exception.NotFoundException;
 import lk.ou.se.test.service.custom.EmployeeService;
@@ -28,6 +29,13 @@ public class EmployeeController {
         return new ResponseEntity<>(allEmployees,httpHeaders,HttpStatus.OK);
     }
 
+    @GetMapping(value = "/getDependents/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<GetDependentDTO>> getDependentsByID(@PathVariable String id) {
+        List<GetDependentDTO> allDependents = employeeService.getDependentById(id);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("X-Count",allDependents.size() + "");
+        return new ResponseEntity<>(allDependents,httpHeaders,HttpStatus.OK);
+    }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee getEmployee(@PathVariable String id) {
@@ -38,7 +46,7 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping(params ="q=last")
+    @GetMapping("/getLastId")
     public String getLastEmpId() {
         return employeeService.getLastEmployeeId();
     }

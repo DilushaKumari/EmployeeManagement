@@ -1,6 +1,7 @@
 package lk.ou.se.test.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -21,14 +22,15 @@ public class Employee implements SuperEntity {
     @JoinColumn(name = "super_visor")
     private Employee super_visor;
 
-    @JsonManagedReference
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "department",referencedColumnName ="dep_id" )
+//    @JsonManagedReference
+    @ManyToOne(fetch=FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name = "department" )
+//    @JsonIgnore
     private Department department;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "employee",fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    private List<Dependent> dependents = new ArrayList<>();
+ //  @JsonBackReference
+//    @OneToMany(mappedBy = "employee",fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+//    private List<Dependent> dependents = new ArrayList<>();
 
     public Employee() {
     }
@@ -100,9 +102,9 @@ public class Employee implements SuperEntity {
         this.department = department;
     }
 
-    public List<Dependent> getDependents() {
-        return dependents;
-    }
+//    public List<Dependent> getDependents() {
+//        return dependents;
+//    }
 
     @Override
     public String toString() {

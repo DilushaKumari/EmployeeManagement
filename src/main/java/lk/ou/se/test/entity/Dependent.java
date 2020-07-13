@@ -1,11 +1,9 @@
 package lk.ou.se.test.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Dependent implements SuperEntity {
@@ -13,9 +11,10 @@ public class Dependent implements SuperEntity {
     @Id
     private String dependent_id;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "emp_id",referencedColumnName = "emp_id")
+    @JoinColumn(name = "emp_id")
+//    @JsonIgnore
     private Employee employee;
 
     private String dependent_fname;

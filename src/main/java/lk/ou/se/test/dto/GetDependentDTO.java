@@ -1,14 +1,16 @@
-package lk.ou.se.test.entity;
+package lk.ou.se.test.dto;
 
-public class CustomEntity implements SuperEntity {
+
+public class GetDependentDTO {
     private String emp_id;
     private String dependent_fname;
     private String dependent_lname;
 
-    public CustomEntity() {
+    public GetDependentDTO() {
+
     }
 
-    public CustomEntity(String emp_id, String dependent_fname, String dependent_lname) {
+    public GetDependentDTO(String emp_id, String dependent_fname, String dependent_lname) {
         this.setEmp_id(emp_id);
         this.setDependent_fname(dependent_fname);
         this.setDependent_lname(dependent_lname);

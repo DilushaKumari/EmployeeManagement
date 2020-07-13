@@ -2,10 +2,7 @@ package lk.ou.se.test.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +14,9 @@ public class Department implements SuperEntity {
     String dep_id;
     private String dep_name;
 
-    @JsonBackReference
-    @OneToMany(mappedBy ="department",fetch = FetchType.EAGER)
-    private List<Employee> employees = new ArrayList<>();
+//    @JsonBackReference
+//    @OneToMany(mappedBy ="department",fetch = FetchType.EAGER)
+//    private List<Employee> employees = new ArrayList<>();
 
     public Department() {
     }
@@ -46,7 +43,7 @@ public class Department implements SuperEntity {
         this.dep_name = dep_name;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
+//    public List<Employee> getEmployees() {
+//        return employees;
+//    }
 }
